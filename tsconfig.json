@@ -17,7 +17,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "module": "es2020",
+    "module": "ES2022",
     "paths": {
       "ngforage": [
         "dist/ngforage/ngforage",
@@ -25,7 +25,7 @@
       ]
     },
     "lib": [
-      "es2020",
+      "ES2022",
       "dom"
     ]
   },

@@ -1,19 +1,17 @@
 {
-  "name": "ngforage",
-  "version": "11.0.0",
+  "name": "ngforage-a19",
+  "version": "19.0.0",
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0",
     "localforage": "^1.10.0"
   },
   "devDependencies": {
     "@types/uuid": "^9.0.2",
     "lodash-es": "^4.17.21",
     "uuid": "^9.0.0",
-    "zone.js": "~0.14.2"
+    "zone.js": "0.15.0"
   },
   "dependencies": {
-    "tslib": "^2.4.0"
+    "tslib": "^2.6.0"
   },
   "description": "localForage bindings for Angular",
   "keywords": [
