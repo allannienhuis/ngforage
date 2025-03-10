@@ -6,6 +6,11 @@ support is great these days & the API is much more performance and feature-rich.
 
 Peace out and a huge thanks to everyone who's used `ngforage` over the years!
 
+
+# angular 19
+
+several users have forked this repository to keep the angular updates going. This fork currently supports angular 19
+
 # ngforage
 
 [localforage](https://www.npmjs.com/package/localforage) bindings for Angular
@@ -23,7 +28,7 @@ Peace out and a huge thanks to everyone who's used `ngforage` over the years!
   <summary>Installation</summary>
 
   You can also npm install manually:
-  
+
   ```bash
    npm install localforage@^1.10.0 ngforage@^11.0.0 # Angular 17
    npm install localforage@^1.10.0 ngforage@^10.0.0 # Angular 16
@@ -39,10 +44,10 @@ Peace out and a huge thanks to everyone who's used `ngforage` over the years!
 </details>
 <details>
   <summary>Basic Usage</summary>
-  
+
   ```typescript
     import {DEFAULT_CONFIG, NgForageOptions, NgForageConfig, Driver} from 'ngforage';
-    
+
     @NgModule({
       providers: [
         // One way of configuring ngForage
@@ -71,7 +76,7 @@ Peace out and a huge thanks to everyone who's used `ngforage` over the years!
       }
     }
   ```
-  
+
   ```typescript
     import {NgForage, Driver, NgForageCache, CachedItem} from 'ngforage';
 
@@ -83,22 +88,22 @@ Peace out and a huge thanks to everyone who's used `ngforage` over the years!
     })
     class SomeComponent implements OnInit {
       constructor(private readonly ngf: NgForage, private readonly cache: NgForageCache) {}
-      
+
       public getItem<T = any>(key: string): Promise<T> {
         return this.ngf.getItem<T>(key);
       }
-      
+
       public getCachedItem<T = any>(key: string): Promise<T | null> {
         return this.cache.getCached<T>(key)
           .then((r: CachedItem<T>) => {
             if (!r.hasData || r.expired) {
               return null;
             }
-            
+
             return r.data;
           })
       }
-      
+
       public ngOnInit() {
         this.ngf.name = 'SomeStore';
         this.cache.driver = Driver.LOCAL_STORAGE;
@@ -109,7 +114,7 @@ Peace out and a huge thanks to everyone who's used `ngforage` over the years!
 
 <details>
   <summary>Store instances</summary>
-  
+
   It is recommended to declare `NgForage` and/or `NgForageCache` in providers
   if you're not using the default configuration. The running configuration
   hash is used to create and reuse drivers (e.g. different IndexedDB
@@ -119,26 +124,26 @@ Peace out and a huge thanks to everyone who's used `ngforage` over the years!
 
 <details>
   <summary>Defining a Driver</summary>
-  
+
   1. Define a driver as described in the [localForage docs](https://localforage.github.io/localForage/#driver-api-definedriver)
   2. Plug it in, either directly through localForage or through `NgForageConfig`:
-  
+
   ```typescript
   import {NgModule} from "@angular/core";
   import {NgForageConfig} from 'ngforage';
   import localForage from 'localforage';
-  
+
   // Your driver definition
   const myDriver: LocalForageDriver = {/*...*/};
-  
+
   // Define it through localForage
   localForage.defineDriver(myDriver)
     .then(() => console.log('Defined!'))
     .catch(console.error);
-  
+
   @NgModule({})
   export class AppModule {
-  
+
     constructor(conf: NgForageConfig) {
       // Or through NgForageConfig
       conf.defineDriver(myDriver)

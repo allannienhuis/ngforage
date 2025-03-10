@@ -1,5 +1,5 @@
 {
-  "name": "ngforage-a19",
+  "name": "ngforage",
   "description": "localForage bindings for Angular",
   "version": "19.0.0",
   "private": true,
@@ -111,6 +111,10 @@
     {
       "name": "patrykp57",
       "url": "https://github.com/patrykp57"
+    },
+    {
+      "name": "allannienhuis",
+      "url": "https://github.com/allannienhuis"
     }
   ]
 }
